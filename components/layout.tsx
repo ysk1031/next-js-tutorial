@@ -8,7 +8,7 @@ import React from "react";
 const name = "Yusuke Aono";
 export const siteTitle = 'Next.js Sample Website';
 
-export const Layout: React.FC<{home: boolean}> = ({ children, home }) => {
+export const Layout: React.FC<{home?: boolean}> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>

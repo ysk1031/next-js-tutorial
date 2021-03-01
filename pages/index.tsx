@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ allPostsData }) => {
+const Home = ({ allPostsData }: { allPostsData: {date: string, id: string, title: string}[] }) => {
   return (
     <Layout home>
       <Head>
@@ -33,7 +33,7 @@ const Home = ({ allPostsData }) => {
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title}) => (
-            <li className={utilStyles.listItem} key={{id}}>
+            <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
