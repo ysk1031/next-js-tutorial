@@ -4,8 +4,10 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import { Date } from '../components/date';
+import { GetStaticProps } from 'next';
+import React from 'react';
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
@@ -14,7 +16,9 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({
+const Home: React.FC<{
+  allPostsData: { date: string; id: string; title: string }[];
+}> = ({
   allPostsData,
 }: {
   allPostsData: { date: string; id: string; title: string }[];
@@ -27,11 +31,12 @@ const Home = ({
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
-          Hello, I'm Yusuke. I'm working at Atrae, Inc. as a software engineer.
+          Hello, I&apos;m Yusuke. I&apos;m working at Atrae, Inc. as a software
+          engineer.
         </p>
         <p>
-          (This is a sample website - you'll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          (This is a sample website - you&apos;ll be building a site like this
+          on <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
       </section>
 
