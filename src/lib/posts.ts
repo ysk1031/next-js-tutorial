@@ -6,9 +6,13 @@ import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export const getSortedPostsData = (): {date: string, id: string, title: string}[] => {
+export const getSortedPostsData = (): {
+  date: string;
+  id: string;
+  title: string;
+}[] => {
   const fileNames: string[] = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map(fileName => {
+  const allPostsData = fileNames.map((fileName) => {
     const id: string = fileName.replace(/\.md$/, '');
     const fullPath: string = path.join(postsDirectory, fileName);
     const fileContents: string = fs.readFileSync(fullPath, 'utf8');
@@ -16,11 +20,11 @@ export const getSortedPostsData = (): {date: string, id: string, title: string}[
 
     return {
       id,
-      ...(matterResult.data as {date: string, title: string}),
-    }
+      ...(matterResult.data as { date: string; title: string }),
+    };
   });
 
-  return allPostsData.sort((a, b)=> {
+  return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
@@ -29,18 +33,25 @@ export const getSortedPostsData = (): {date: string, id: string, title: string}[
   });
 };
 
-export const getAllPostIds = (): {params: {id: string}}[] => {
+export const getAllPostIds = (): { params: { id: string } }[] => {
   const fileNames: string[] = fs.readdirSync(postsDirectory);
-  return fileNames.map(fileName => {
+  return fileNames.map((fileName) => {
     return {
       params: {
         id: fileName.replace(/\.md$/, ''),
-      }
-    }
+      },
+    };
   });
 };
 
-export const getPostData = async (id: string): Promise<{date: string, title: string, id: string, contentHtml: string}> => {
+export const getPostData = async (
+  id: string,
+): Promise<{
+  date: string;
+  title: string;
+  id: string;
+  contentHtml: string;
+}> => {
   const fullPath: string = path.join(postsDirectory, `${id}.md`);
   const fileContents: string = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
@@ -53,6 +64,6 @@ export const getPostData = async (id: string): Promise<{date: string, title: str
   return {
     id,
     contentHtml,
-    ...(matterResult.data as {date: string, title: string}),
+    ...(matterResult.data as { date: string; title: string }),
   };
 };
