@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write 'src/**/*.{ts,tsx,json}'",
-    "lint": "eslint --ext .ts,.tsx 'src/**/*.{ts.tsx}'",
-    "lint:fix": "eslint --ext .ts,.tsx 'src/**/*.{ts.tsx}' && prettier --write 'src/**/*.{ts,tsx,json}'"
+    "lint": "eslint --ext .ts,.tsx 'src/**'",
+    "lint:fix": "eslint --ext .ts,.tsx 'src/**' && prettier --write 'src/**/*.{ts,tsx,json}'"
   },
   "dependencies": {
     "date-fns": "^2.17.0",
