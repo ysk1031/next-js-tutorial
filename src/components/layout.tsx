@@ -45,8 +45,8 @@ export const Layout: React.FC<{ children: ReactNode; home?: boolean }> = ({
           </>
         ) : (
           <>
-            <Link href="/">
-              <a>
+            <Link href="/" passHref>
+              <a href="/">
                 <Image
                   priority
                   src="/images/profile.jpg"
@@ -58,8 +58,10 @@ export const Layout: React.FC<{ children: ReactNode; home?: boolean }> = ({
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+              <Link href="/" passHref>
+                <a href="/" className={utilStyles.colorInherit}>
+                  {name}
+                </a>
               </Link>
             </h2>
           </>
@@ -69,8 +71,8 @@ export const Layout: React.FC<{ children: ReactNode; home?: boolean }> = ({
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
+          <Link href="/" passHref>
+            <a href="/">← Back to home</a>
           </Link>
         </div>
       )}

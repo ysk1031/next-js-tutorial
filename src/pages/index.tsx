@@ -45,8 +45,8 @@ const Home: React.FC<{
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+              <Link href={`/posts/${id}`} passHref>
+                <a href="/">{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
